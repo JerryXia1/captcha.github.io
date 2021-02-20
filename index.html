@@ -1,109 +1,118 @@
+@@ -0,0 +1,114 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>Captcha Generator</title>
-	<link rel="shortcut icon" href="logo.png"/>
-</head>
+    <meta charset="utf-8">
+    <title>Captcha Generator</title>
 <body>
-	<style>
-	body, html {
-	 height: 100%;
-	 display: grid;
-	 background-color: #121212;
-	}
-	.everything {
-	 margin: auto;
-	 text-align:center;
-	 font-family: Helvetica, sans-serif;
-	 letter-spacing: 2px;
-	 color: white;
-	 font-size: 2em;
-	}
-	input[type=file] {
-	   padding:10px 15px; background:#292929; border:0 none;
-	   cursor:pointer;
-	   -webkit-border-radius: 5px;
-	   border-radius: 5px;
-	   text-align:center;
-	   -webkit-transition: 0.5s;
-	   transition: 0.5s;
-	}
-	input[type=text] {
-	   padding:13px 15px; background:#292929; border:0 none;
-	   width: 275px;
-	   cursor:pointer;
-	   -webkit-border-radius: 5px;
-	   border-radius: 5px;
-	   text-align:left;
-	   color: white;
-	   -webkit-transition: 0.5s;
-	   transition: 0.5s;
-	}
-	input[type=text]:focus {
-	 border: 1px solid #555;
-	}
-	input[type=file]:focus {
-	 border: 1px solid #555;
-	}
-	input[type=button] {
-	   padding:25px 15px; background:#121212;
-	   border:none;
-	   outline:none;
-	   cursor:pointer;
-	   -webkit-border-radius: 5px;
-	   border-radius: 5px;
-	   text-align:center;
-	   margin: auto;
-	   text-align:center;
-	   font-family: Helvetica, sans-serif;
-	   letter-spacing: 2px;
-	   color: white;
-	   font-size: 0.5em;
-	   font-weight: bold;
-	}
 
-	#footer {
-	   bottom: 0;
-	   color: #8f8f8f;
-	   height: 2em;
-	   left: 0;
-	   position: fixed;
-	   font-size: small;
-	   width:100%;
-	   text-align:center;
-	   font-family: Helvetica, sans-serif;
-	}
-	a:link {
-	 color: #8f8f8f;
-	 text-decoration: underline;
-	}
-	a:visited {
-	 color: #8f8f8f;
-	 text-decoration: underline;
-	}
-	</style>
-	<div class="everything">
-		<h1 id="title">Captcha Generator &lt;/&gt;<br></h1>
-		<div id="theform">
-			<h1 id="title"><input accept="image/*" id="inputimg" type="file"> <input id="inputtext" placeholder="what does the image show?" type="text"><br>
-			<input id="inputsubmit" type="button" value="submit"> 
-			<script type="text/javascript">
+<style>
+body, html {
+  height: 100%;
+  display: grid;
+  background-color: #121212;
+}
+.everything {
+  margin: auto;
+  text-align:center;
+  font-family: Helvetica, sans-serif;
+  letter-spacing: 2px;
+  color: white;
+  font-size: 2em;
+  margin-top: -25px;
+}
+input[type=file] {
+	padding:10px 15px; background:#292929; border:0 none;
+	margin: 5px;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	text-align:center;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+input[type=text] {
+	padding:13px 15px; background:#292929; border:0 none;
+	margin: 5px;
+	width: 275px;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	text-align:left;
+	color: white;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+input[type=text]:focus {
+  border: 1px solid #555;
+}
+input[type=file]:focus {
+  border: 1px solid #555;
+}
+input[type=button] {
+	padding:25px 15px; background:#121212;
+	border:none;
+	outline:none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	text-align:center;
+	margin: auto;
+	text-align:center;
+	font-family: Helvetica, sans-serif;
+	letter-spacing: 2px;
+	color: white;
+	font-size: 0.5em;
+	font-weight: bold;
+}
 
-			const inputtext = document.getElementById("inputtext")
-			const inputsubmit = document.getElementById("inputsubmit")
+#footer {
+    bottom: 0;
+    color: #8f8f8f;
+    height: 2em;
+    left: 0;
+    position: fixed;
+    font-size: small;
+    width:100%;
+	text-align:center;
+	font-family: Helvetica, sans-serif;
+}
+a:link {
+  color: #8f8f8f;
+  text-decoration: underline;
+}
+a:visited {
+  color: #8f8f8f;
+  text-decoration: underline;
+}
+</style>
 
-			inputsubmit.onclick = function () {
-			const value = inputtext.value;
-			console.log(value)
-			localStorage.setItem("captions", value)
-			window.location.href = ("file:///C:/Users/Computer/Desktop/captcha%20funny/generated.html");
-			}
-			</script></h1>
-			<div id="footer">
-				<h1 id="title">Turn any image into a captcha - messily coded by <a href="https://twitter.com/xiajer" target="_blank">Jerry Xia (kdgs#0001)</a> </h1>
-			</div>
-		</div>
-	</div>
+<div class="everything">
+	<h1 id="title"> Captcha Generator </>
+	<br>
+	<div id="theform">
+	<input id="inputimg" type="file" accept="image/*"/> <input id="inputtext" type="text" placeholder="what does the image show?"/>
+	<br>
+	<input id="inputsubmit" type="button" value="submit"/>
+</div>
+</div>
+
+<script type="text/javascript">
+
+const inputtext = document.getElementById("inputtext")
+const inputsubmit = document.getElementById("inputsubmit")
+
+inputsubmit.onclick = function () {
+  const value = inputtext.value;
+  console.log(value)
+  localStorage.setItem("captions", value)
+  window.location.href = ("file:///C:/Users/Computer/Desktop/captcha%20funny/generated.html");
+}
+</script>
+
+
+<div id="footer">
+Turn any image into a captcha - messily coded by <a href="https://twitter.com/xiajer" target="_blank">Jerry Xia (kdgs#0001)</a>
+
+</div>
 </body>
 </html>
