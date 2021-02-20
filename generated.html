@@ -1,483 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-
-    <meta charset="utf-8">
-    <title>Captcha Generator</title>
-	    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap""
-		 rel="stylesheet">
-  </head>
-
-  <body>
-    <div class="captcha">
+<head>
+	<meta charset="utf-8">
+	<title>Captcha Generator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="logo.png"/>
+</head>
+<body>
+	<div class="captcha">
 		<div class="text">
 			I'm not a robot
 		</div>
 		<div class="box">
-		<div class="checkbutton">
-		<input id="input" type="button" />
+			<div class="checkbutton">
+				<input id="input" type="button">
+			</div>
+			<div class="checkbutton2"></div>
+			<div class="loader"></div>
+			<div class="checkmark draw"></div>
 		</div>
-		<div class="checkbutton2"></div>
-		<div class="loader"></div>
-		<div class="checkmark draw"></div>
-		</div>
-		<div class="logo">
-		<img src="logo.png" alt="img" width=35px height=35px>
-		</div>
+		<div class="logo"><img alt="img" height="35px" src="logo.png" width="35px"></div>
 		<div class="recap">
-		reCAPTCHA
+			reCAPTCHA
 		</div>
 		<div class="privacy">
-		<a href="https://policies.google.com/privacy?hl=en">Privacy </a>- <a href="https://policies.google.com/terms?hl=en">Terms</a>
-
+			<a href="https://policies.google.com/privacy?hl=en">Privacy</a> - <a href="https://policies.google.com/terms?hl=en">Terms</a>
 		</div>
 	</div>
- </body>
 	<div class="full" id="full">
-	<div class="image" id="image">
-	<div class="arrow-left"></div>
-	<div class="arrow-leftinner"></div>
-	<div class="insideoutline"></div>
-		<div class="blue">
-			<div class="selecttext">
-			Select all squares with
-			</div>
-			<br>
-			<div class="fillcontain">
-				<div class="fill" id="userinput">
-
+		<div class="image" id="image">
+			<div class="arrow-left"></div>
+			<div class="arrow-leftinner"></div>
+			<div class="insideoutline"></div>
+			<div class="blue">
+				<div class="selecttext">
+					Select all squares with
+				</div><br>
+				<div class="fillcontain">
+					<div class="fill" id="userinput"></div>
 				</div>
-			</div>
-			<div class="imagecontain">
-				<div class="imageupload">
-					<img id="capimg" src="test.png" alt="your image" />
+				<div class="imagecontain">
+					<div class="imageupload"><img alt="your image" id="capimg" src="test.png"></div>
 				</div>
-			</div>
-			<div class="logos">
-				<img id="refresh" src="refresh.png"/>
-				<img id="headphone" src="headphones.png"/>
-				<img id="info" src="info.png"/>
-			</div>
-			<div class="submit">
-				<input id="verify" type="button" value="VERIFY"/>
+				<div class="logos"><img id="refresh" src="refresh.png"> <img id="headphone" src="headphones.png"> <img id="info" src="info.png"></div>
+				<div class="submit">
+					<input id="verify" type="button" value="VERIFY">
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+	</script> 
+	<script>
 
-<script>
-
-window.onload = function(){
-      var title = (localStorage.getItem('captions'));
-      console.log(title);
-      document.getElementById('userinput').innerHTML = title;
-}
-
-$(function () {
-    $(":file").change(function () {
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = imageIsLoaded;
-            reader.readAsDataURL(this.files[0]);
-
-        }
-    });
-});
-
-function imageIsLoaded(e) {
-    $('#capimg').attr('src', e.target.result).width(100).height(100);
-};
-$('.checkbutton').click(function() {
-	document.getElementById("full").style.pointerEvents = "auto";
-	$('.checkbutton').fadeToggle(100)
-	$('.loader').fadeToggle(200)
-	setTimeout( fadeOut, 1500);
-	function fadeOut () {
-		$('.loader').fadeToggle(300)
-		$('.checkbutton2').fadeToggle(300)
-		$('.image').fadeToggle(300)
+	window.onload = function(){
+	     var title = (localStorage.getItem('captions'));
+	     console.log(title);
+	     document.getElementById('userinput').innerHTML = title;
 	}
-})
-$('.submit').click(function() {
-  $('.image').fadeToggle(300)
-  $('.checkbutton2').fadeToggle(300)
-  setTimeout( checkedm, 750);
-  function checkedm () {
-  $('.circle-loader').toggleClass('load-complete');
-  $('.checkmark').toggle();
-  }
-  setTimeout( resetting, 6000);
-  function resetting () {
-  document.getElementById("full").style.pointerEvents = "none";
-  $('.checkmark').fadeToggle(300);
-  $('.checkbutton').fadeToggle(300)
-  }
-});
-  </script>
 
-  <style>
-  body, html {
-  height: 101%;
-  display: grid;
-  background-color: #121212;
-}
-.full {
-  position:absolute;
-  height: 100%;
-  width: 100%;
-  display: grid;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  resize: both;
-  overflow: auto;
-  pointer-events: none;
-  background: url('transparent.png');
-}
+	$(function () {
+	   $(":file").change(function () {
+	       if (this.files && this.files[0]) {
+	           var reader = new FileReader();
+	           reader.onload = imageIsLoaded;
+	           reader.readAsDataURL(this.files[0]);
 
- .checkmark {
-	position:absolute;
-	display: none;
-}
+	       }
+	   });
+	});
 
-.checkmark.draw:after {
-	 animation-duration: 800ms;
-	 animation-timing-function: ease;
-	 animation-name: checkmark;
-	 transform: scaleX(-1) rotate(135deg);
-}
- .checkmark:after {
-	 opacity: 1;
-	 height: 1.8em;
-	 width: 0.8em;
-	 transform-origin: left top;
-	 border-right: 3px solid #009e55;
-	 border-top: 3px solid #009e55;
-	 content: '';
-	 left: 1.25em;
-	 top: -0.5em;
+	function imageIsLoaded(e) {
+	   $('#capimg').attr('src', e.target.result).width(100).height(100);
+	};
+	$('.checkbutton').click(function() {
+	   document.getElementById("full").style.pointerEvents = "auto";
+	   $('.checkbutton').fadeToggle(100)
+	   $('.loader').fadeToggle(200)
+	   setTimeout( fadeOut, 1500);
+	   function fadeOut () {
+	       $('.loader').fadeToggle(300)
+	       $('.checkbutton2').fadeToggle(300)
+	       $('.image').fadeToggle(300)
+	   }
+	})
+	$('.submit').click(function() {
+	 $('.image').fadeToggle(300)
+	 $('.checkbutton2').fadeToggle(300)
+	 setTimeout( checkedm, 750);
+	 function checkedm () {
+	 $('.circle-loader').toggleClass('load-complete');
+	 $('.checkmark').toggle();
+	 }
+	 setTimeout( resetting, 6000);
+	 function resetting () {
+	 document.getElementById("full").style.pointerEvents = "none";
+	 $('.checkmark').fadeToggle(300);
+	 $('.checkbutton').fadeToggle(300)
+	 }
+	});
+	</script>
+	<style>
+	 body, html {
+	 height: 101%;
+	 display: grid;
+	 background-color: #121212;
+	}
+	.full {
+	 position:absolute;
+	 height: 100%;
+	 width: 100%;
+	 display: grid;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 resize: both;
+	 overflow: auto;
+	 pointer-events: none;
+	 background: url('transparent.png');
+	}
+
+	.checkmark {
+	   position:absolute;
+	   display: none;
+	}
+
+	.checkmark.draw:after {
+	    animation-duration: 800ms;
+	    animation-timing-function: ease;
+	    animation-name: checkmark;
+	    transform: scaleX(-1) rotate(135deg);
+	}
+	.checkmark:after {
+	    opacity: 1;
+	    height: 1.8em;
+	    width: 0.8em;
+	    transform-origin: left top;
+	    border-right: 3px solid #009e55;
+	    border-top: 3px solid #009e55;
+	    content: '';
+	    left: 1.25em;
+	    top: -0.5em;
+	    position: absolute;
+	}
+	@keyframes checkmark {
+	    0% {
+	        height: 0;
+	        width: 0;
+	        opacity: 1;
+	   }
+	    20% {
+	        height: 0;
+	        width: 0.8em;
+	        opacity: 1;
+	   }
+	    40% {
+	        height: 1.4em;
+	        width: 0.8em;
+	        opacity: 1;
+	   }
+	    100% {
+	        height: 1.8em;
+	        width: 0.8em;
+	        opacity: 1;
+	   }
+	}
+
+	#verify {
+	   background-color: #4A90E2;
+	   border-style: none;
+	   border-radius: 1px;
+	   margin-top: -20px;
+	   margin-left: 285px;
+	   height: 42px;
+	   width: 100px;
+	   color:white;
+	   font-family: 'Roboto', arial;
+	   font-weight: 600;
+	   font-stretch: condensed;
+	   font-size: 14px;
+	}
+
+	#grid1 {
+	 width: 100px;
+	 height: 100px;
+	 background: url(img_navsprites.gif) -91px 0;
+	}
+
+	.click{
+	 background-color: blue;
+	 width: 100%;
+	 height 100%;
+	 top: 0;
+	 left: 0;
+	 z-index: 100;
+	}
+
+	.logos{
+	 margin-top: 460px;
+	 margin-left: 10px;
+	 height: 15px;
+	}
+	#refresh {
+	 width: 30px;
+	 height: 30px;
+	 opacity: 0.5;
+	 background: url(img_navsprites.gif) -91px 0;
+	}
+	#headphone {
+	 width: 30px;
+	 height: 30px;
+	 margin-left: 10px;
+	 opacity: 0.5;
+	 background: url(img_navsprites.gif) -91px 0;
+	}
+	#info {
+	 width: 30px;
+	 height: 30px;
+	 margin-left: 10px;
+	 opacity: 0.5;
+	 background: url(img_navsprites.gif) -91px 0;
+	}
+	#info:hover {
+	 opacity: .75;
+	}
+	#headphone:hover {
+	 opacity: .75;
+	}
+	#refresh:hover {
+	 opacity: .75;
+	}
+
+	.loader {
+	 border: 5px solid #f9f9f9;
+	 border-radius: 50%;
+	 border-top: 5px solid #4A90E2;
+	 width: 22px;
+	 height: 22px;
+	 -webkit-animation: spin 2s linear infinite; /* Safari */
+	 animation: spin 2s linear infinite;
+	 margin-left: 17px;
+	 margin-top: -25px;
 	 position: absolute;
-}
- @keyframes checkmark {
-	 0% {
-		 height: 0;
-		 width: 0;
-		 opacity: 1;
+	 display:none;
 	}
-	 20% {
-		 height: 0;
-		 width: 0.8em;
-		 opacity: 1;
+
+	/* Safari */
+	@-webkit-keyframes spin {
+	 0% { -webkit-transform: rotate(0deg); }
+	 100% { -webkit-transform: rotate(800deg); }
 	}
-	 40% {
-		 height: 1.4em;
-		 width: 0.8em;
-		 opacity: 1;
+
+	@keyframes spin {
+	 0% { transform: rotate(0deg); }
+	 100% { transform: rotate(800deg); }
 	}
-	 100% {
-		 height: 1.8em;
-		 width: 0.8em;
-		 opacity: 1;
+
+	.arrow-left {
+	 width: 0;
+	 height: 0;
+	 border-top: 10px solid transparent;
+	 border-bottom: 10px solid transparent;
+	 position: absolute;
+	 border-right:10px solid #D3D3D3;
+	 margin-left: -10px;
+	 margin-top: 298px;
 	}
-}
+	.arrow-leftinner {
+	 width: 0;
+	 height: 0;
+	 border-top: 9px solid transparent;
+	 border-bottom: 9px solid transparent;
+	 position: absolute;
+	 border-right:9px solid #ffffff;
+	 margin-left: -9px;
+	 margin-top: 299px;
+	}
 
-#verify {
-    background-color: #4A90E2;
-	border-style: none;
-	border-radius: 1px;
-	margin-top: -20px;
-	margin-left: 285px;
-	height: 42px;
-	width: 100px;
-	color:white;
-	font-family: 'Roboto', arial;
-	font-weight: 600;
-	font-stretch: condensed;
-	font-size: 14px;
-}
+	.image {
+	 color:black;
+	 background-color: #ffffff;
+	 width: 400px;
+	 height: 600px;
+	 box-shadow: 2px 2px 2px #0D0D0D;
+	 border-style: solid;
+	 border-color: #D3D3D3;
+	 border-width: 1px;
+	 border-radius: 1px;
+	 margin-left: 200px;
+	 display: none;
+	}
+	.insideoutline {
+	 position: absolute;
+	 color:black;
+	 background-color: white;
+	 width: 400px;
+	 height: -1px;
+	 margin-left: -1px;
+	 margin-top: 540px;
 
-#grid1 {
-  width: 100px;
-  height: 100px;
-  background: url(img_navsprites.gif) -91px 0;
-}
+	 border-style: solid;
+	 border-color: #D3D3D3;
+	 border-width: 1px 0 0 0;
+	 border-radius: 1px;
+	}
+	.blue {
+	 position:absolute;
+	 color:white;
+	 background-color: #4A90E2;
+	 width: 385px;
+	 height: 115px;
+	 margin-left: 7px;
+	 margin-top: 7px;
+	}
+	.imagecontain {
+	 position:absolute;
+	 color:white;
+	 background-color: #000000;
+	 width: 385px;
+	 height: 400px;
+	 margin-left: 0px;
+	 margin-top: 35px;
+	}
+	div.imageupload{
+	 margin-left: 0px;
+	 margin-top: 0px;
+	}
 
-.click{
-  background-color: blue;
-  width: 100%;
-  height 100%;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
+	#capimg {
+	 width: 385px;
+	 height: 400px;
+	 object-fit: cover;
+	}
 
-.logos{
-  margin-top: 460px;
-  margin-left: 10px;
-  height: 15px;
-}
-#refresh {
-  width: 30px;
-  height: 30px;
-  opacity: 0.5;
-  background: url(img_navsprites.gif) -91px 0;
-}
-#headphone {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
-  opacity: 0.5;
-  background: url(img_navsprites.gif) -91px 0;
-}
-#info {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
-  opacity: 0.5;
-  background: url(img_navsprites.gif) -91px 0;
-}
-#info:hover {
-  opacity: .75;
-}
-#headphone:hover {
-  opacity: .75;
-}
-#refresh:hover {
-  opacity: .75;
-}
+	.selecttext{
+	 color:white;
+	 font-family: 'Roboto', arial;
+	 font-size: 13px;
+	 margin-left: 25px;
+	 margin-top: 25px;
+	 font-weight: 300;
+	}
+	.fillcontain{
+	 background-color: #4A90E2;
+	 width: 380px;
+	 height: 45px;
+	}
+	.fill{
+	 color:white;
+	 font-family: 'Roboto', arial;
+	 font-size: 30px;
+	 margin-left: 25px;
+	 margin-top: -15px;
+	 font-weight: 900;
+	 letter-spacing: 0px;
+	 line-height: 34px;
+	 overflow: hidden;
+	}
 
-.loader {
-  border: 5px solid #f9f9f9;
-  border-radius: 50%;
-  border-top: 5px solid #4A90E2;
-  width: 22px;
-  height: 22px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-  margin-left: 17px;
-  margin-top: -25px;
-  position: absolute;
-  display:none;
-}
+	.captcha{
+	 margin: auto;
+	 background-color: #f9f9f9;
+	 border-style: solid;
+	 border-color: #D3D3D3;
+	 box-shadow: 2px 2px 2px #0D0D0D;
+	 border-width: 1px;
+	 border-radius: 4px;
+	 width: 305px;
+	 height: 80px;
+	 text-align: center;
+	 font-family: 'Roboto', arial;
+	 font-size: 15px;
+	}
+	a:link {
+	 text-decoration: none;
+	 color: #555555;
+	}
+	a:visited {
+	 color: #555555;
+	}
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(800deg); }
-}
+	a:hover {
+	 color: #555555;
+	 text-decoration: underline;
+	}
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(800deg); }
-}
+	a:active {
+	 color: #555555;
+	}
+	.text{
+	   padding-top: 30px;
+	   padding-right: 80px;
+	}
+	input[type=button]:hover {
+	 border-color: #b5b5b5;
+	}
 
-.arrow-left {
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  position: absolute;
-  border-right:10px solid #D3D3D3;
-  margin-left: -10px;
-  margin-top: 298px;
-}
-.arrow-leftinner {
-  width: 0;
-  height: 0;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  position: absolute;
-  border-right:9px solid #ffffff;
-  margin-left: -9px;
-  margin-top: 299px;
-}
+	input[type=button] {
+	 background-color: #ffffff;
+	 border-style: solid;
+	 border-color: #C1C1C1;
+	 outline:none;
+	 width: 30px;
+	 height: 30px;
+	 border-radius: 2px;
+	 float: left;
+	 margin-left: 20px;
+	 margin-top: -23px;
+	}
 
-.image {
-  color:black;
-  background-color: #ffffff;
-  width: 400px;
-  height: 600px;
-  box-shadow: 2px 2px 2px #0D0D0D;
-  border-style: solid;
-  border-color: #D3D3D3;
-  border-width: 1px;
-  border-radius: 1px;
-  margin-left: 200px;
-  display: none;
-}
-.insideoutline {
-  position: absolute;
-  color:black;
-  background-color: white;
-  width: 400px;
-  height: -1px;
-  margin-left: -1px;
-  margin-top: 540px;
+	.checkbutton2 {
+	 background-color: #ffffff;
+	 border-style: solid;
+	 border-color: #C1C1C1;
+	 border-width: 2px;
+	 outline:none;
+	 width: 26.75px;
+	 height: 26px;
+	 position:absolute;
+	 border-radius: 2px;
+	 margin-left: 20px;
+	 margin-top: -23px;
+	 display:none;
+	}
 
-  border-style: solid;
-  border-color: #D3D3D3;
-  border-width: 1px 0 0 0;
-  border-radius: 1px;
-}
-.blue {
-  position:absolute;
-  color:white;
-  background-color: #4A90E2;
-  width: 385px;
-  height: 115px;
-  margin-left: 7px;
-  margin-top: 7px;
-}
-.imagecontain {
-  position:absolute;
-  color:white;
-  background-color: #000000;
-  width: 385px;
-  height: 400px;
-  margin-left: 0px;
-  margin-top: 35px;
-}
-div.imageupload{
-  margin-left: 0px;
-  margin-top: 0px;
-}
-
-#capimg {
-  width: 385px;
-  height: 400px;
-}
-
-.selecttext{
-  color:white;
-  font-family: 'Roboto', arial;
-  font-size: 13px;
-  margin-left: 25px;
-  margin-top: 25px;
-  font-weight: 300;
-}
-.fillcontain{
-  background-color: #4A90E2;
-  width: 380px;
-  height: 45px;
-}
-.fill{
-  color:white;
-  font-family: 'Roboto', arial;
-  font-size: 30px;
-  margin-left: 25px;
-  margin-top: -15px;
-  font-weight: 900;
-  letter-spacing: 0px;
-}
-
-.captcha{
-  margin: auto;
-  background-color: #f9f9f9;
-  border-style: solid;
-  border-color: #D3D3D3;
-  box-shadow: 2px 2px 2px #0D0D0D;
-  border-width: 1px;
-  border-radius: 4px;
-  width: 305px;
-  height: 80px;
-  text-align: center;
-  font-family: 'Roboto', arial;
-  font-size: 15px;
-}
-a:link {
-  text-decoration: none;
-  color: #555555;
-}
-a:visited {
-  color: #555555;
-}
-
-a:hover {
-  color: #555555;
-  text-decoration: underline;
-}
-
-a:active {
-  color: #555555;
-}
-.text{
-	padding-top: 30px;
-	padding-right: 80px;
-}
-input[type=button]:hover {
-  border-color: #b5b5b5;
-}
-
-input[type=button] {
-  background-color: #ffffff;
-  border-style: solid;
-  border-color: #C1C1C1;
-  outline:none;
-  width: 30px;
-  height: 30px;
-  border-radius: 2px;
-  float: left;
-  margin-left: 20px;
-  margin-top: -23px;
-}
-
-.checkbutton2 {
-  background-color: #ffffff;
-  border-style: solid;
-  border-color: #C1C1C1;
-  border-width: 2px;
-  outline:none;
-  width: 26.75px;
-  height: 26px;
-  position:absolute;
-  border-radius: 2px;
-  margin-left: 20px;
-  margin-top: -23px;
-  display:none;
-}
-
-.logo {
-  margin-left: 220px;
-  margin-top: -38px;
-}
-.recap {
-  color: #555555;
-  font-family: 'Roboto', arial;
-  font-size: 10px;
-  margin-left: 220px;
-  margin-top: 1px;
-}
-.privacy {
-  color: #555555;
-  font-family: 'Roboto', arial;
-  font-size: 8.5px;
-  margin-left: 220px;
-  margin-top: 1px;
-}
-#footer {
-    bottom: 0;
-    color: #8f8f8f;
-    height: 2em;
-    left: 0;
-    position: fixed;
-    font-size: small;
-    width:100%;
-	text-align:center;
-	font-family: Helvetica, sans-serif;
-}
-a:link {
-  color: #8f8f8f;
-  text-decoration: underline;
-}
-a:visited {
-  color: #8f8f8f;
-  text-decoration: underline;
-}
-  </style>
-  <div id="footer">
-Created by <a href="https://twitter.com/xiajer" target="_blank">Jerry Xia (kdgs#0001)</a>
-
-</div>
+	.logo {
+	 margin-left: 220px;
+	 margin-top: -38px;
+	}
+	.recap {
+	 color: #555555;
+	 font-family: 'Roboto', arial;
+	 font-size: 10px;
+	 margin-left: 220px;
+	 margin-top: 1px;
+	}
+	.privacy {
+	 color: #555555;
+	 font-family: 'Roboto', arial;
+	 font-size: 8.5px;
+	 margin-left: 220px;
+	 margin-top: 1px;
+	}
+	#footer {
+	   bottom: 0;
+	   color: #8f8f8f;
+	   height: 2em;
+	   left: 0;
+	   position: fixed;
+	   font-size: small;
+	   width:100%;
+	   text-align:center;
+	   font-family: Helvetica, sans-serif;
+	}
+	a:link {
+	 color: #8f8f8f;
+	 text-decoration: underline;
+	}
+	a:visited {
+	 color: #8f8f8f;
+	 text-decoration: underline;
+	}
+	</style>
+	<div id="footer">
+		Created by <a href="https://twitter.com/xiajer" target="_blank">Jerry Xia (kdgs#0001)</a>
+	</div>
+</body>
 </html>
