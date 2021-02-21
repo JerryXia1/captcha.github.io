@@ -114,6 +114,8 @@ const inputtext = document.getElementById("inputtext")
 const inputsimg = document.getElementById("inputimg")
 const inputsubmit = document.getElementById("inputsubmit")
 
+localStorage.clear();
+
 $(function () {
     $(":file").change(function () {
         if (this.files && this.files[0]) {
