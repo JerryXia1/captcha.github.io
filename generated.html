@@ -41,9 +41,13 @@
 				</div>
 				<div class="imagecontain">
 					<div class="imageupload">
-						<img src="" class="userimage" id="userimage" alt="no image? your file is likely too big, please keep it under 3.5mb for best results."/>
-
-						
+						<img src="" class="userimage" id="userimage" alt="no image? upload one! or your file might be too big, for best results keep under 3.5mb."/>
+						<div class="line1"/>
+						<div class="line2"/>
+						<div class="line3"/>
+						<div class="line4"/>
+						<div class="line5"/>
+						<div class="line6"/>
 					</div>
 				</div>
 				<div class="logos"><img id="refresh" src="refresh.png"> <img id="headphone" src="headphones.png"> <img id="info" src="info.png"></div>
@@ -120,6 +124,48 @@
 	 background-color: #121212;
 	 z-index: 2;
 	}
+	
+	.line1{
+	 position:absolute;
+	 border-left: 2px solid white;
+	 height: 390px;
+	}
+	.line2{
+	 position:absolute;
+	 margin-left: 95px;
+	 border-left: 2px solid white;
+	 height: 390px;
+	}
+	.line3{
+	 position:absolute;
+	 margin-left: -200px;
+	 border-left: 2px solid white;
+	 height: 390px;
+	}
+	.line4{
+	 position:absolute;
+	 border-top: 2px solid white;
+	 margin-top: 195px;
+	 margin-left: -95px;
+	 height: 390px;
+	 width: 395px;
+	}	
+	.line5{
+	 position: absolute;
+	 border-bottom: 2px solid white;
+	 margin-top: 95px;
+	 margin-left: -5px;
+	 width: 395px;
+	}	
+	.line6{
+	 position:absolute;
+	 border-top: 2px solid white;
+	 margin-top: -195px;
+	 margin-left: 0px;
+	 width: 395px;
+	}	
+	
+	
 	
 	.full {
 	 position:absolute;
@@ -209,7 +255,6 @@
 	   background-color: #4A90E2;
 	   border-style: none;
 	   border-radius: 1px;
-	   margin-top: -22px;
 	   margin-left: 285px;
 	   height: 42px;
 	   width: 100px;
@@ -218,6 +263,8 @@
 	   font-weight: 600;
 	   font-stretch: condensed;
 	   font-size: 14px;
+	   position: absolute;
+	   margin-top: 206px;
 	}
 
 
@@ -231,9 +278,11 @@
 	}
 
 	.logos{
-	 margin-top: 442px;
+	position: absolute;
+	 margin-top: 213px;
 	 margin-left: 10px;
 	 height: 15px;
+	 width: 150px;
 	}
 	#refresh {
 	 width: 30px;
